@@ -79,26 +79,51 @@
                 <h4 class="lead text-info">A palindrome is a word or phrase that reads the same backward or forward. Taco Cat is a fun Web App that uses Javascript logic to check if the word or phrase entered, is a palindrome or not.</h4>
             </div>
         </div>
-        <div class="col pt-5">
+        <div class="col pt-3">
             <h4 class="lead my-3 text-secondary">
-                
                 Enter the word or phrase you want to check below, push the button, then find out!
             </h4>
-            <input class="form-control my-1 border-info" type="type-text" placeholder="enter a word or phrase here" id="message">
+            <input class="form-control my-1 border-info" type="type-text" placeholder="enter a word or phrase here" id="userInput">
             <button class="btn btn-dark border-info text-info mt-3" id="btnSubmit">
                 Palindrome or Not!
             </button>
-            <div class="alert alert-info mt-5 d-none" id="alertY" role="alert">
-                <h4 class="alert-heading">
-                    Hurray, it's a Palindrome!
-                </h4>
+            <div class="alert alert-info mt-5 d-none" id="originalInput" role="alert">
+                <div class="d-flex">
+                    <i class="bi-hand-index-fill align-items-start pe-3"></i>
+                    <h4>
+                        You entered:
+                    </h4>
+                </div>
                 <hr />
                 <p class="mb-0" id="msg"></p>
             </div>
-            <div class="alert alert-info mt-5 d-none" id="alertN" role="alert">
-                <h4 class="alert-heading">
-                    Sorry, it's not a Palindrome!
-                </h4>
+            <div class="alert alert-dark mt-5 d-none" id="reversedOutput" role="alert">
+                <div class="d-flex">
+                    <i class="skip-backward-fill align-items-start pe-3"></i>
+                    <h4 class="alert-heading">
+                        Your word or phrase backwards is:
+                    </h4>
+                </div>
+                <hr />
+                <p class="mb-0" id="msg"></p>
+            </div>
+            <div class="alert alert-success mt-5 d-none" id="alertYesPal" role="alert">
+                <div class="d-flex">
+                    <i class="hand-thumbs-up-fill align-items-start pe-3"></i>
+                    <h4 class="alert-heading">
+                        Hurray, it's a Palindrome!
+                    </h4>
+                </div>
+                <hr />
+                <p class="mb-0" id="msg"></p>
+            </div>
+            <div class="alert alert-danger mt-5 d-none" id="alertNotPal" role="alert">
+                <div class="d-flex">
+                    <i class="hand-thumbs-down-fill align-items-start pe-3"></i>
+                    <h4 class="alert-heading">
+                        Sorry, it's not a Palindrome!
+                    </h4>
+                </div>
                 <hr />
                 <p class="mb-0" id="msg"></p>
             </div>
