@@ -83,28 +83,17 @@
             <h4 class="lead my-3 text-secondary">
                 Enter the word or phrase you want to check below, push the button, then find out!
             </h4>
-            <input class="form-control my-1 border-info" type="type-text" placeholder="enter a word or phrase here" id="userInput">
+            <input class="form-control my-1 border-info" type="type-text" placeholder="enter a word or phrase here" id="message">
             <button class="btn btn-dark border-info text-info mt-3" id="btnSubmit">
                 Palindrome or Not!
             </button>
-            <div class="alert alert-info mt-5 d-none" id="originalOutput" role="alert">
-                <div class="d-flex">
-                    <i class="bi-hand-index-fill align-items-start pe-3"></i>
-                    <h4>
-                        You entered:
-                    </h4>
-                </div>
-                <hr />
-                <p class="mb-0" id="msg"></p>
-            </div>
-            <div class="alert alert-dark mt-5 d-none" id="reversedOutput" role="alert">
+            <div class="alert alert-dark mt-5 d-none" id="alert" role="alert">
                 <div class="d-flex">
                     <i class="skip-backward-fill align-items-start pe-3"></i>
                     <h4 class="alert-heading">
                         Your word or phrase backwards is:
                     </h4>
                 </div>
-                <hr />
                 <p class="mb-0" id="msg"></p>
             </div>
             <div class="alert alert-success mt-5 d-none" id="alertYesPal" role="alert">
@@ -114,8 +103,6 @@
                         Hurray, it's a Palindrome!
                     </h4>
                 </div>
-                <hr />
-                <p class="mb-0" id="msg"></p>
             </div>
             <div class="alert alert-danger mt-5 d-none" id="alertNotPal" role="alert">
                 <div class="d-flex">
@@ -124,8 +111,6 @@
                         Sorry, it's not a Palindrome!
                     </h4>
                 </div>
-                <hr />
-                <p class="mb-0" id="msg"></p>
             </div>
         </div>
     </main>
@@ -159,7 +144,7 @@
 <script src="js/site.js"></script>
 <!-- Event Listener -->
 <script>
-    document.getElementById('btnSubmit').addEventListener('click', displayResults);
+    document.getElementById('btnSubmit').addEventListener('click', getValues);
 </script>
 
 </html>
