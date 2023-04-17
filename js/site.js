@@ -1,80 +1,83 @@
 // App Controller / Entry Point
-// This function is responsible for receiving 
-// and responding to the user's string 
 function getValues() {
+    // get the users input
+    // decide what to do with it
+    let alertBox = document.getElementById('alert').value;
+    alertBox.classList.remove('alert-success');
+    alertBox.classList.remove('alert-danger');
+    alertBox.classList.remove('d-none');
     // user enters a word or phrase here, get user's input string
     let userInput = document.getElementById('message').value;
-    
-    // variable storing the user's string in reverse
-    let reversedInput = checkForPalindrome(userInput);  
-
-     // displayString communicates with EventListener
-    // to display results of palindrome checker
-    displayResults(reversedInput);
+    // variable storing the user's string in reverse 
+    if (userInput.length > 0) {
+        let reversedInput =  reverseString(userInput);
+        let isPalindrome =  checkForPalindrome(userInput);
+        // displayString communicates with EventListener
+        // to display results of palindrome checker
+        displayResult(reversedInput, isPalindrome);
+        // alerts error message 
+    } else {
+        Swal.fire({
+               
+                icon: 'error'
+                backdrop: false,
+                title: 'Taco Cat',
+                text: "You must enter a word or phrase to check for a palindrome!"
+            
+            });
+    }
 }
 
 // Business Logic
-// This function is responsible for comparing the
-//  string the user entered and the string in reverse
-// to determine whether a string is a palindrome or not
-function checkForPalindrome(userInput) {
-    // removes non-alphanumeric characters, underscores, 
-    // and all white spaces, replaces with nothing
-    userInput = userInput.replace(/[\W\s\.]/g, '');
+function checkForPalindrome(userString) {
 
-    // converts userInput to lowercase, 
-    let userConvertStr = userInput.toLowerCase();
+    userString = userString.toLowerCase();
 
-    // converts userConvertStr (string) to an array, then 
-    // reverses it, before converting it back to a string
-    let reversed = userConvertStr.split("").reverse().join("");
+        const regEx = /[^a-z0-9]/gi
 
-    // if the reversed string and the string input by the user 
-    // are exact matches, if statement returns true, otherwise
-    // if not a match statement returns false, both conditions
-    // return the users message reversed
+        userString = userString.replace(regEx, "");
+
+        let revString = revString(userString);
+
+        let isPalindrome = revString == userString;
+
+        return isPalindrome;
+
+}
+
+function reverseString(message) {
     // take a string, return it in reverse
     let reversedMessage = ''
-    if (reversed === userConvertStr) {
-        results = true;
-    } else {
-        results = false;
-    }
-}
 
+    //  reverse the string
+    for (let index = message.length - 1; index >= 0; index = index - 1){
+        reversedMessage += message[index];
+    }
+
+    return reversedMessage;
+}
 // View Function
-// This function is responsible for displaying a message to 
-// the user to show whether their string is a palindrome or not
-function displayResults(reversedMessage) {
-    // shows the reversed message string text on the page  
-    document.getElementById('msg').textContent = reversedMessage;
-  
-    if (results === true) {
-        // you want to remove the class d-none to get the alert to display
-        // showing yes, it's a palindrome
-        document.getElementById('alertYesPal').classList.remove('d-none');
+displayResult(reversedInput, isPalindrome); {
 
-        // remove the class d-none to get the alert to display for the 
-        // container for the reversed message 
-        document.getElementById('alert').classList.remove('d-none')
-       
-       
+    let reversedMessage = ''
+
+    let alertBox = document.getElementById('alert');
+
+    let alertClass = palindromeResult == true ? 'alert-success' : 'alert-danger';
+    alertBox.classList.add(alertClass);
+
+    if (palindromeResult == true) {
+        resultMessage = "Hurray, it's a Palindrome!"
     } else {
-        // you want to remove the class d-none to get the alert display
-        // showing no, it's not a palindrome
-        document.getElementById('alertNotPal').classList.remove('d-none');
-
-        // remove the class d-none to get the alert to display for the 
-        // container for the reversed message  
-        document.getElementById('alert').classList.remove('d-none')
-    
+        resultMessage = "Sorry, it's not a Palindrome!"
     }
+
+    resultMessage += "Your word or phrase reversed is" + reversedMessage;
+
+    // show the string on the page / assign text input to reversedMessage
+    document.getElementById('msg').textContent = reversedMessage;
+    // you want to remove the class d-none to get the alert to show / display
+    document.getElementById('alert').classList.remove('d-none');
 }
 
-    // Swal.fire(
-    //     {
-    //         backdrop: false,
-    //         title: 'Taco Cat',
-    //         text: msg
-    //     }
-    // );
+  
