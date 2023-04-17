@@ -87,21 +87,13 @@
             <button class="btn btn-dark border-info text-info mt-3" id="btnSubmit">
                 Palindrome or Not!
             </button>
-            <div class="alert alert-dark mt-5 d-none" id="alert" role="alert">
-                <div class="d-flex">
-                    <i class="skip-backward-fill align-items-start pe-3"></i>
-                    <h4 class="alert-heading">
-                        Your word or phrase backwards is:
-                    </h4>
-                </div>
-                <p class="mb-0" id="msg"></p>
-            </div>
             <div class="alert alert-success mt-5 d-none" id="alertYesPal" role="alert">
                 <div class="d-flex">
                     <i class="hand-thumbs-up-fill align-items-start pe-3"></i>
                     <h4 class="alert-heading">
                         Hurray, it's a Palindrome!
                     </h4>
+                    <p class="mb-0" id="msg"></p>
                 </div>
             </div>
             <div class="alert alert-danger mt-5 d-none" id="alertNotPal" role="alert">
@@ -110,6 +102,7 @@
                     <h4 class="alert-heading">
                         Sorry, it's not a Palindrome!
                     </h4>
+                    <p class="mb-0" id="msg"></p>
                 </div>
             </div>
         </div>
@@ -144,7 +137,7 @@
 <script src="js/site.js"></script>
 <!-- Event Listener -->
 <script>
-    document.getElementById('btnSubmit').addEventListener('click', getValues);
+     document.getElementById('btnSubmit').addEventListener('click', getValues);
 </script>
 
 </html>
