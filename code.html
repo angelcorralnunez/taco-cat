@@ -13,9 +13,10 @@
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400;500;600;700&family=Allan:wght@400;700&family=Bebas+Neue&family=Delicious+Handrawn&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Mallanna&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400;500;600;700&family=Allan:wght@400;700&family=Bebas+Neue&family=Delicious+Handrawn&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Mallanna&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!-- bootstrap icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <!-- css -->
@@ -32,10 +33,10 @@
         <nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img src="/images/Semicolon Only/Semicolon Color logo - no background.png" height="60"><span
-                        class="ms-2 ms-md-3 fs-2">Taco Cat</span>
+                    <img src="/images/Semicolon Only/Semicolon Color logo - no background.png" height="60">
+                    <span class="ms-4 ms-md-3 fs-2">My Pal Taco Cat</span>
                 </a>
-                <!-- ToDo: Customize mobile hamburger menu button -->
+                <!-- mobile hamburger menu button -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -74,98 +75,121 @@
     </header>
 
     <main class="container mt-3">
-        <h1 class="border-bottom border-2 border-secondary text-dark">The Code</h1>
+        <h1 id="code-title" class="display-5 border-bottom border-2 border-secondary text-info-emphasis fw-bold mb-3 mb-md-4">The Code</h1>
         <div class="row">
             <div class="col-lg-8 col-12">
                 <pre class="line-numbers">
                     <code class="language-js">
                         // App Controller / Entry Point
-                        // This function is responsible for receiving 
-                        // and responding to the user's string 
+                        // communicates with the DOM, get the user's input
                         function getValues() {
-                            // user enters a word or phrase here, get user's input string
-                            let userInput = document.getElementById('message').value;
-                            
-                            // variable storing the user's string in reverse
-                            let reversedInput = checkForPalindrome(userInput);  
-                        
-                             // displayString communicates with EventListener
-                            // to display results of palindrome checker
-                            displayResults(reversedInput);
+                        // get alert box
+                        let alertbox = document.getElementById("alertBox");
+                        // removing style classes from alert message box temporarily
+                        alertbox.classList.remove("alert-success");
+                        alertbox.classList.remove("alert-danger");
+                        // get the user's input string from the DOM
+                        let userInput = document.getElementById("userMessage").value;
+                        // sets regex to any non-alphanumeric characters whitespace 
+                        // characters, and underscores globally
+                        const regEx = /[\W\s_]/g;
+                        // takes the userInput string, converts it to lowercase,
+                        // then removes the above declared regEx characters and
+                        // whitespaces and replaces them with nothing, then
+                        // assigns the resulting string to the variable userInput
+                        userInput = userInput.toLowerCase().replace(regEx, "");
+                        // takes userInput variable string, converts it to an array,
+                        // reverses it, then converts the array back to a string
+                        let reversedInput = userInput.split("").reverse().join("");
+                        // If user input character length is greater than 0, 
+                        if (userInput.length > 0) {
+                            // assigns result of the function checkForPalindrome that runs 
+                            // with a parameter of userInput to the variable reversedInput
+                            let isPalindrome = checkForPalindrome(userInput);
+                            // assigns result of the function displayResults that runs 
+                            // with a parameters of reversedInput and isPalindrome 
+                            // to the variable displayResults
+                            displayResults(reversedInput, isPalindrome);
+                            // If user input character length is less than 0,
+                            // so, if they din't enter anything a message pop-up
+                            // displays the following error message
+                        } else {
+                            Swal.fire({
+                            icon: "error",
+                            backdrop: false,
+                            title: "Error",
+                            text: "Please enter, letters, a word, a phrase, or numbers.",
+                            });
                         }
-                        
-                        // Business Logic
+                        }
+
+                        // Business logic
                         // This function is responsible for comparing the
                         //  string the user entered and the string in reverse
                         // to determine whether a string is a palindrome or not
                         function checkForPalindrome(userInput) {
-                            // removes non-alphanumeric characters, underscores, 
-                            // and all white spaces, replaces with nothing
-                            userInput = userInput.replace(/[\W\s\.]/g, '');
-                        
-                            // converts userInput to lowercase, 
-                            let userConvertStr = userInput.toLowerCase();
-                        
-                            // converts userConvertStr (string) to an array, then 
-                            // reverses it, before converting it back to a string
-                            let reversed = userConvertStr.split("").reverse().join("");
-                        
-                            // if the reversed string and the string input by the user 
-                            // are exact matches, if statement returns true, otherwise
-                            // if not a match statement returns false, both conditions
-                            // return the users message reversed
-                            // take a string, return it in reverse
-                            let reversedMessage = ''
-                            if (reversed === userConvertStr) {
-                                results = true;
-                            } else {
-                                results = false;
-                            }
+                        // takes userInput variable string, converts it to an array,
+                        // reverses it, then converts the array back to a string
+                        let reversedInput = userInput.split("").reverse().join("");
+                        // If the variables reversedInput and userInput are equal
+                        // (the same), the value is then assigned to the
+                        // variable isPalindrome because it is a palindrome.
+                        let isPalindrome = reversedInput == userInput;
+                        // returns the variable isPalindrome holding the user's 
+                        // input string palindrome as a value
+                        return isPalindrome;
                         }
-                        
-                        // View Function
+
+                        // View
                         // This function is responsible for displaying a message to 
                         // the user to show whether their string is a palindrome or not
-                        function displayResults(reversedMessage) {
-                            // shows the reversed message string text on the page  
-                            document.getElementById('msg').textContent = reversedMessage;
-                          
-                            if (results === true) {
-                                // you want to remove the class d-none to get the alert to display
-                                // showing yes, it's a palindrome
-                                document.getElementById('alertYesPal').classList.remove('d-none');
-                        
-                                // remove the class d-none to get the alert to display for the 
-                                // container for the reversed message 
-                                document.getElementById('alert').classList.remove('d-none')
-                               
-                               
-                            } else {
-                                // you want to remove the class d-none to get the alert display
-                                // showing no, it's not a palindrome
-                                document.getElementById('alertNotPal').classList.remove('d-none');
-                        
-                                // remove the class d-none to get the alert to display for the 
-                                // container for the reversed message  
-                                document.getElementById('alert').classList.remove('d-none')
-                            
-                            }
+                        function displayResults(reversedInput, isPalindrome) {
+                        // assigns the value of the below if statement 
+                        // to the variable resultMessage for display 
+                        let resultMessage = "";
+                        // comminicates with the DOM, gets the element with the ID
+                        // alertBox to add a style class to the alert depending on the 
+                        // results of the below ternary statement, if true/a palindrome
+                        // adding the class alert-success or if false/not a palindrome 
+                        // adding the class alert-danger
+                        let alertBox = document.getElementById("alertBox");
+                        let alertClass = isPalindrome == true ? "alert-success" : "alert-danger";
+                        alertBox.classList.add(alertClass);
+                        // depending on true or false results of the users string
+                        // from the function isPalindrome, one of the two below 
+                        // instructions will execute to give instructions on which
+                        // message to display
+                        if (isPalindrome == true) {
+                            // assigns the following string showing that the user's input 
+                            // is a palindrome to the ID resultHeader for display
+                            resultHeader = "Hurray, your phrase is a palindrome!";
+                            // assigns the user's original input string but reversed
+                            // to the variable resultHeader 
+                            resultMessage = "YOUR PHRASE REVERSED IS: " + reversedInput;
+                        } else {
+                            // assigns the following string showing that the user's input 
+                            // is not a palindrome to the ID resultHeader for display
+                            resultHeader = "Sorry try again, your phrase is not a palindrome!";
+                            // assigns the user's original input string but reversed
+                            // to the variable resultHeader
+                            resultMessage = "YOUR PHRASE REVERSED IS: " + reversedInput;
                         }
-                        
-                            // Swal.fire(
-                            //     {
-                            //         backdrop: false,
-                            //         title: 'Taco Cat',
-                            //         text: msg
-                            //     }
-                            // );
+                        // communicates with the DOM to show the message with th result
+                        // of the palindrome check, either yes or no, to the user
+                        document.getElementById("alertHeader").textContent = resultHeader;
+                        // communicates with the DOM to show the reversed message string 
+                        // text content on the page 
+                        document.getElementById("returnMsg").textContent = resultMessage;
+                        //removes the class d-none to get the alert to display to the user
+                        alertBox.classList.remove("d-none");
+                        }
                     </code>
                 </pre>
             </div>
             <div class="co-lg-4 col-12">
-                <p class="text-info">the code is structured in three functions</p>
-                <h5 class="text-secondary">displayMessage</h5>
-                <p class="text-secondary">prints out the message</p>
+                <p class="text-info-emphasis fw-bold lead">The code is structured in three functions.</p>
+                <h5 class="text-dark">displayMessage</h5>
+                <p class="text-dark">prints out the message</p>
             </div>
         </div>
 
