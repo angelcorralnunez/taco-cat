@@ -80,14 +80,14 @@ function displayResults(reversedInput, isPalindrome) {
   if (isPalindrome == true) {
     // assigns the following string showing that the user's input 
     // is a palindrome to the ID resultHeader for display
-    resultHeader = "Hurray, your phrase is a palindrome!";
+    resultHeader = "Hurray, it's a palindrome!";
     // assigns the user's original input string but reversed
     // to the variable resultHeader 
     resultMessage = "YOUR PHRASE REVERSED IS: " + reversedInput;
   } else {
     // assigns the following string showing that the user's input 
     // is not a palindrome to the ID resultHeader for display
-    resultHeader = "Sorry try again, your phrase is not a palindrome!";
+    resultHeader = "Sorry try again, it's not a palindrome!";
     // assigns the user's original input string but reversed
     // to the variable resultHeader
     resultMessage = "YOUR PHRASE REVERSED IS: " + reversedInput;
