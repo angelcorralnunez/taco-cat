@@ -16,7 +16,8 @@ font-family: 'Fira Sans Condensed', sans-serif;
      --acn-light-color:  rgba(158, 233, 230, 1);
      --acn-background-color: rgba(207, 244, 243, 1);
      --acn-bootstrap-info-color: rgba(13, 202, 240, 1); 
-
+    --acn-bootstrap-info--emphasis-color: rgba(9, 84, 99, 1); 
+    
      /* text styles */
      --acn-title-color: var(--acn--dark-color);
      --acn-font-size: 1.2rem;
