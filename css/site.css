@@ -117,6 +117,10 @@ footer .bi:hover {
     border-radius: 30px;
 }
 
+#app-btn:hover {
+    color: rgba(255, 255, 255, 1)!important;
+}
+
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
     #app-logo-img {
