@@ -117,15 +117,36 @@ footer .bi:hover {
     border-radius: 30px;
 }
 
+.app-btn {
+    width: 50%;
+    }
+
 .app-btn:hover {
     color: rgba(255, 255, 255, 1)!important;
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-    #app-logo-img {
+    .appLogo {
         max-width: 400px;
+    }
+
+    .app-btn {
+    width: 30%;
     }
 }
 
+/* Large devices (tablets, 992px and up) */
+@media (min-width: 992px) {
+    .app-btn {
+        width: 20%;
+    }
+}
+
+/* XX-large devices (tablets, 1400px and up) */
+@media (min-width: 1400px) {
+    .app-btn {
+        width: 15%;
+    }
+}
 
