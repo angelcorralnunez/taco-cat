@@ -83,22 +83,6 @@ footer {
     font-family: 'Alkatra', cursive;
 }
 
-footer {
-    background: var(--acn-dark-color);
-    color: var(--acn-light-color);
-}
-
-footer .bi {
-    color: var(--acn-light-color); 
-    font-size: 2rem;
-    padding: .5rem;
-    transition: color .25s ease;
-}
-
-footer .bi:hover {
-    color: var(--acn-bootstrap-info-color);
-}
-
 .checklist {
     list-style-type: none;
 }
@@ -124,6 +108,22 @@ footer .bi:hover {
 
 .app-btn:hover {
     color: rgba(255, 255, 255, 1)!important;
+}
+
+footer {
+    background: var(--acn-dark-color);
+    color: var(--acn-light-color);
+}
+
+footer .bi {
+    color: var(--acn-light-color); 
+    font-size: 2rem;
+    padding: .5rem;
+    transition: color .25s ease;
+}
+
+footer .bi:hover {
+    color: var(--acn-bootstrap-info-color);
 }
 
 /* Medium devices (tablets, 768px and up) */
