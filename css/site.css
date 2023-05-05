@@ -99,19 +99,21 @@ footer {
 .devIcons {
     font-size: 3rem;
     padding: .5rem;
-}
+} 
 
-.appLogo {
+.app-logo-img {
     max-width: 350px;
     border-radius: 30px;
 }
 
 .app-btn {
-    width: 50%;
+    letter-spacing: .10rem;
+    width: 60%;
     }
 
 .app-btn:hover {
-    color: rgba(255, 255, 255, 1)!important;
+    color: var(--acn-dark-color) !important;
+    background-color: var(--acn-bootstrap-info-color) !important;
 }
 
 footer {
@@ -132,7 +134,7 @@ footer .bi:hover {
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-    .appLogo {
+    .app-logo-img {
         max-width: 400px;
     }
 
