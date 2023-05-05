@@ -38,7 +38,7 @@ body {
     flex-direction: column;
     /*flex-column*/
 
-  font-family: 'Fira Sans Condensed', sans-serif !important;
+  font-family: var(--acn-body-font) !important;
   font-family: var(acn-font-size);
   font-family: var(acn-font-weight);
   font-family: var(acn-line-height);
