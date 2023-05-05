@@ -83,6 +83,10 @@ footer {
     font-family: 'Alkatra', cursive;
 }
 
+.txt-gry-outline {
+    text-shadow: 2px 2px 3px rgba(196, 196, 196, 1);
+}
+
 .checklist {
     list-style-type: none;
 }
